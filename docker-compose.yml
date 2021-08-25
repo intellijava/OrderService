@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+#  mydb:
+#    image: mysql:latest
+#    container_name: testdborderservice
+#    environment:
+#      - ACCEPT_EULA=Y
+#      - MYSQL_ROOT_PASSWORD=my-secret-pw
+#      - MYSQL_ROOT_HOST=%
+#      - MYSQL_DATABASE=test
+#      - MYSQL_USER=user
+#      - MYSQL_PASSWORD=password
+##    volumes:
+##      - ./mysqlstorage:/var/lib/mysql
+##    #    - ./dao/src/scripts:/docker-entrypoint-initdb.d
+#    ports:
+#      - "3307:3307"
+#    restart: "unless-stopped"
+#  order-service:
+#    container_name: order-service
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    image: order-service
+##    depends_on:
+##      - mydb
+##    volumes:
+##      - ./core/target/web:/app/web
+#    ports:
+#      - "9090:9090"
+#    restart: "no"
+  rabbitmq:
+    image: "rabbitmq"
+    container_name: myRabbitMQ
+    restart: always
+    environment:
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+#    volumes:
+#      - 'rabbitmq:/var/lib/rabbitmq'
